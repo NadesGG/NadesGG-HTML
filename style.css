@@ -4,6 +4,7 @@ body {
 	/* background: url('images/background2.jpg') no-repeat; */
 	/* background: url('images/fightclub2.jpg') no-repeat; */
 	/* background: black; */ 
+	background-image: url("images/3.jpg");
 	background-attachment: fixed; 
 	background-size: cover;
 	display: grid;
@@ -17,7 +18,7 @@ body {
 	margin: auto;
 	margin-top: 5%;
 	width: 30rem;
-	height: 32rem;
+	height: 20rem;
 	border: 3px solid #e4bd12;
 	padding: 10px;
 	text-align: center;
