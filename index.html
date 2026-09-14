@@ -98,10 +98,10 @@
     form .input[type="email"] { flex: 1 1 220px; min-width: 0; }
     .reasons { flex: 1 1 100%; margin: 4px 0 0; padding: 0; border: 0; min-width: 0; }
     .reasons legend { padding: 0; margin-bottom: 8px; font-size: 13px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
-    .reasons label { display: flex; align-items: flex-start; gap: 10px; padding: 7px 10px; font-size: 14px; font-weight: 600; line-height: 1.35; text-wrap: pretty; cursor: pointer; border: 2px solid transparent; }
+    .reasons label { display: flex; align-items: flex-start; gap: 10px; padding: 7px 10px; font-size: 14px; font-weight: 600; line-height: 1.35; text-wrap: pretty; cursor: pointer; }
     .reasons label + label { margin-top: 2px; }
-    .reasons label:hover { border-color: #201e1d; }
-    .reasons label:has(input:checked) { background: #fff; border-color: #201e1d; }
+    .reasons label:hover { background: rgba(255, 255, 255, .25); }
+    .reasons label:has(input:checked) { background: #fff; }
     .hype { display: inline-block; padding: 0 5px; background: #201e1d; color: #fff; font-weight: 900; font-style: italic; letter-spacing: .04em; transform: skew(-6deg); transition: transform 120ms; }
     .reasons label:hover .hype { transform: skew(-6deg) scale(1.08); }
     .reasons input { flex: none; width: 16px; height: 16px; margin: 1px 0 0; accent-color: #201e1d; cursor: pointer; }
@@ -168,7 +168,7 @@
               <fieldset class="reasons" id="reasons">
                 <legend>Why you'd make a good beta tester</legend>
                 <label><input type="checkbox" name="reasons" value="Grenade lineup savant"><span>I'm a <strong class="hype">Grenade Line-Up SAVANT</strong> and other sites just don't cut it for me</span></label>
-                <label><input type="checkbox" name="reasons" value="Cracked at CS2"><span>I'm <strong class="hype">CRACKED OUT</strong> at CS2 and I need an outlet for my talent</span></label>
+                <label><input type="checkbox" name="reasons" value="Cracked at CS2"><span>I'm <strong class="hype">CRACKED</strong> at CS and I need an outlet for my talent</span></label>
                 <label><input type="checkbox" name="reasons" value="Content creator"><span>I'm a <strong class="hype">Content Creator</strong> looking to level-up my content creation</span></label>
                 <label><input type="checkbox" name="reasons" value="Experienced coach"><span>I'm a <strong class="hype">CS2 Coach</strong> who is basically Phil Jackson - Experienced &amp; Proven</span></label>
                 <label><input type="checkbox" name="reasons" value="Knows callouts"><span>I know <strong class="hype">callouts</strong> like I'm a Mirage tour guide</span></label>
