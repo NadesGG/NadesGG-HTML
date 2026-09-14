@@ -134,12 +134,7 @@
     @keyframes flashRecover { 0% { filter: brightness(2.1) contrast(.45) saturate(.25); } 35% { filter: brightness(1.4) contrast(.7) saturate(.6); } 100% { filter: none; } }
     @keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
     @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: .62; transform: scale(1.03); } }
-    /* --pop is set per letter from the logo's grenade colours; the dark outline keeps orange legible on the orange page. */
-    @keyframes letterPop {
-      0%, 62%, 100% { transform: translateY(0) scale(1); color: #fff; text-shadow: none; }
-      10% { transform: translateY(-2px) scale(1.3); color: var(--pop, #fff); text-shadow: -1px -1px 0 #201e1d, 1px -1px 0 #201e1d, -1px 1px 0 #201e1d, 1px 1px 0 #201e1d; }
-      26% { transform: translateY(0) scale(1); color: #fff; text-shadow: none; }
-    }
+    @keyframes letterPop { 0%, 62%, 100% { transform: translateY(0) scale(1); } 10% { transform: translateY(-2px) scale(1.35); } 26% { transform: translateY(0) scale(1); } }
 
     @media (prefers-reduced-motion: reduce) {
       .stage, .copy, .kicker, .pop, .flash { animation: none; }
@@ -212,10 +207,8 @@
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     // Footer "In development" letters bounce in sequence; built here so the markup stays readable.
-    // Each letter flashes the next logo grenade colour in turn: orange, red, green, blue.
-    const logoColors = ["#FA9D1D", "#EE383A", "#B8DA85", "#5294D0"];
     const status = $("status");
-    let delay = 0, letter = 0;
+    let delay = 0;
     for (const ch of "In development") {
       const s = document.createElement("span");
       if (ch === " ") {
@@ -224,7 +217,6 @@
         s.className = "pop";
         s.textContent = ch;
         s.style.animationDelay = delay + "ms";
-        s.style.setProperty("--pop", logoColors[letter++ % logoColors.length]);
       }
       status.appendChild(s);
       delay += 80;
