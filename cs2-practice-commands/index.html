@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CS2 Practice Commands: Grenade Practice Config (2026) — nades.gg</title>
+  <meta name="description" content="Copy-paste CS2 practice config for grenade practice: infinite ammo, grenade trajectory preview, rethrow, noclip, clear smokes. Every command checked against current CS2 builds.">
+  <link rel="canonical" href="https://nades.gg/cs2-practice-commands/">
+  <meta name="theme-color" content="#F8771C">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="nades.gg">
+  <meta property="og:url" content="https://nades.gg/cs2-practice-commands/">
+  <meta property="og:title" content="CS2 Practice Commands: Grenade Practice Config">
+  <meta property="og:description" content="A copy-paste practice config for CS2 grenade practice, with every command checked against current builds.">
+  <meta property="og:image" content="https://nades.gg/assets/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="article:modified_time" content="2026-09-14">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CS2 Practice Commands: Grenade Practice Config">
+  <meta name="twitter:description" content="A copy-paste practice config for CS2 grenade practice, with every command checked against current builds.">
+  <meta name="twitter:image" content="https://nades.gg/assets/og-image.jpg">
+
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <link rel="preload" href="/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/guide.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "TechArticle",
+        "headline": "CS2 Practice Commands: Grenade Practice Config",
+        "description": "Copy-paste CS2 practice config for grenade practice, with every command checked against current CS2 builds.",
+        "url": "https://nades.gg/cs2-practice-commands/",
+        "datePublished": "2026-09-14",
+        "dateModified": "2026-09-14",
+        "image": "https://nades.gg/assets/og-image.jpg",
+        "author": { "@type": "Organization", "name": "nades.gg", "url": "https://nades.gg/" },
+        "publisher": { "@id": "https://nades.gg/#org" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "nades.gg", "item": "https://nades.gg/" },
+          { "@type": "ListItem", "position": 2, "name": "CS2 practice commands", "item": "https://nades.gg/cs2-practice-commands/" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is the command for grenade trajectory in CS2?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Use sv_grenade_trajectory_prac_trailtime 8 to draw the flight path of your grenades for 8 seconds, and sv_grenade_trajectory_prac_pipreview 1 for the picture-in-picture landing preview. The CS:GO command sv_grenade_trajectory does not exist in CS2." }
+          },
+          {
+            "@type": "Question",
+            "name": "How do you rethrow a grenade in CS2?",
+            "acceptedAnswer": { "@type": "Answer", "text": "With sv_cheats 1 enabled, run sv_rethrow_last_grenade. It throws the last grenade thrown on the server again from the same spot. Bind it to a key, for example bind \"n\" \"sv_rethrow_last_grenade\"." }
+          },
+          {
+            "@type": "Question",
+            "name": "How do you clear smokes in CS2?",
+            "acceptedAnswer": { "@type": "Answer", "text": "With sv_cheats 1 enabled, run ent_fire smokegrenade_projectile kill. Adding ;stopsound also cuts the smoke sound." }
+          },
+          {
+            "@type": "Question",
+            "name": "Does cl_grenadepreview work in CS2?",
+            "acceptedAnswer": { "@type": "Answer", "text": "No. cl_grenadepreview was a CS:GO command and is not present in CS2 builds. The CS2 equivalent is sv_grenade_trajectory_prac_pipreview 1." }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="site-head">
+    <nav aria-label="Site">
+      <a class="brand" href="/">Nades<span>.</span>gg</a>
+      <div class="head-links">
+        <a href="/cs2-practice-commands/" aria-current="page">Practice commands</a>
+        <a href="/cs2-jumpthrow-bind/">Jumpthrow bind</a>
+        <a class="beta" href="#beta">Request beta</a>
+      </div>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="crumbs"><a href="/">nades.gg</a> / Guides</div>
+      <h1>CS2 practice commands</h1>
+      <p class="standfirst">Practicing in CS2 is harder than it should be. You're left digging up console commands, pasting configs and finding out which ones stopped working in the last update. We believe it should be a lot easier than that.</p>
+      <p class="standfirst">For now, here's how to make it a little easier: a copy-paste config for your own local server with infinite ammo, trajectory trails, rethrow, noclip and clearing smokes, with every command checked against current CS2 builds.</p>
+      <div class="meta">Updated September 14, 2026</div>
+    </div>
+  </div>
+
+  <div class="layout">
+    <article>
+      <div class="answer">
+        <span class="label">Quick answer</span>
+        <p>Start a local server (<strong>Play → Practice</strong>, or type <code>map de_mirage</code> in the console), then paste the one-line config below into the console and press Enter. It turns on cheats, ends warmup, gives you money and infinite ammo, keeps the round from ending, and draws grenade trails.</p>
+      </div>
+
+      <h2 id="config">The practice config</h2>
+      <p>To paste straight into the console, use this version: every command on one line, separated by semicolons. Copy it, paste it into the console, and press <kbd>Enter</kbd>.</p>
+
+      <div class="code">
+        <div class="code-head"><span>One line, for the console</span><button class="copy" type="button">Copy</button></div>
+<pre class="wrap">sv_cheats 1;bot_kick;mp_warmup_end;mp_limitteams 0;mp_autoteambalance 0;mp_maxmoney 60000;mp_startmoney 60000;mp_buytime 9999;mp_buy_anywhere 1;mp_freezetime 0;mp_roundtime 60;mp_roundtime_defuse 60;mp_ignore_round_win_conditions 1;mp_respawn_on_death_ct 1;mp_respawn_on_death_t 1;sv_infinite_ammo 1;ammo_grenade_limit_total 5;sv_grenade_trajectory_prac_pipreview 1;sv_grenade_trajectory_prac_trailtime 8;sv_showimpacts 1;sv_showimpacts_time 10;mp_restartgame 1</pre>
+      </div>
+
+      <p>The same config, one command per line, for saving as a file you can load with one command (see <a href="#cfg-file">saving it as a cfg</a>):</p>
+
+      <div class="code">
+        <div class="code-head"><span>practice.cfg</span><button class="copy" type="button">Copy</button></div>
+<pre>sv_cheats 1
+bot_kick
+mp_warmup_end
+mp_limitteams 0
+mp_autoteambalance 0
+mp_maxmoney 60000
+mp_startmoney 60000
+mp_buytime 9999
+mp_buy_anywhere 1
+mp_freezetime 0
+mp_roundtime 60
+mp_roundtime_defuse 60
+mp_ignore_round_win_conditions 1
+mp_respawn_on_death_ct 1
+mp_respawn_on_death_t 1
+sv_infinite_ammo 1
+ammo_grenade_limit_total 5
+sv_grenade_trajectory_prac_pipreview 1
+sv_grenade_trajectory_prac_trailtime 8
+sv_showimpacts 1
+sv_showimpacts_time 10
+mp_restartgame 1</pre>
+      </div>
+
+      <p><code>mp_restartgame 1</code> goes last on purpose: the money and round settings only take effect once the round restarts.</p>
+
+      <h2 id="start">How to start a practice server</h2>
+      <ol>
+        <li><strong>Turn on the console.</strong> Settings → Game → <strong>Enable Developer Console (~)</strong> → Yes. The console opens with <kbd>~</kbd>.</li>
+        <li><strong>Load a map.</strong> Either go to <strong>Play → Practice</strong> and pick the map, or open the console and type <code>map de_mirage</code> (or <code>de_inferno</code>, <code>de_dust2</code>, <code>de_ancient</code>, <code>de_anubis</code>, <code>de_nuke</code>, <code>de_cache</code>). Valve's <a href="https://store.steampowered.com/news/app/730/view/6250522009507333366" rel="noopener">September 10, 2024 notes</a> confirm both routes start the same kind of local server.</li>
+        <li><strong>Paste the one-line config</strong> into the console and press <kbd>Enter</kbd>.</li>
+      </ol>
+
+      <div class="warn">
+        <p><strong>Workshop maps block most of these commands.</strong> Since the <a href="https://store.steampowered.com/news/app/730/view/1823191198603765" rel="noopener">January 30, 2026 update</a>, community and workshop maps only allow a short list of console commands. Practice on the official maps, or add the launch option <code>-disable_workshop_command_filtering</code>.</p>
+      </div>
+
+      <h2 id="binds">Useful binds</h2>
+      <p>These need <code>sv_cheats 1</code>. Swap the keys for any you don't already use.</p>
+      <div class="code">
+        <div class="code-head"><span>Practice binds</span><button class="copy" type="button">Copy</button></div>
+<pre>bind "n" "sv_rethrow_last_grenade"
+bind "v" "noclip"
+bind "m" "ent_fire smokegrenade_projectile kill;stopsound"</pre>
+      </div>
+      <ul>
+        <li><kbd>N</kbd> throws your last grenade again from the same spot, so you can watch where it lands without walking back.</li>
+        <li><kbd>V</kbd> toggles noclip, so you can fly to the landing spot and back.</li>
+        <li><kbd>M</kbd> removes every active smoke and cuts the smoke sound.</li>
+      </ul>
+
+      <h2 id="explained">Every command explained</h2>
+
+      <h3 id="setup">Setup and teams</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Command</th><th>What it does</th><th>Default</th></tr></thead>
+          <tbody>
+            <tr><td><code>sv_cheats 1</code></td><td>Allows cheat commands such as noclip, rethrow and infinite ammo. Needed for most of this page.</td><td>0</td></tr>
+            <tr><td><code>bot_kick</code></td><td>Removes all bots. Add <code>t</code> or <code>ct</code> to kick one team only.</td><td>—</td></tr>
+            <tr><td><code>mp_warmup_end</code></td><td>Ends warmup straight away.</td><td>—</td></tr>
+            <tr><td><code>mp_limitteams 0</code></td><td>Lets the teams be any size.</td><td>2</td></tr>
+            <tr><td><code>mp_autoteambalance 0</code></td><td>Stops the game moving you to the other team.</td><td>1</td></tr>
+            <tr><td><code>mp_restartgame 1</code></td><td>Restarts the game after 1 second, applying the settings above.</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 id="money">Money and buying</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Command</th><th>What it does</th><th>Default</th></tr></thead>
+          <tbody>
+            <tr><td><code>mp_maxmoney 60000</code></td><td>The most money a player can hold.</td><td>16000</td></tr>
+            <tr><td><code>mp_startmoney 60000</code></td><td>Money you start with after a restart.</td><td>800</td></tr>
+            <tr><td><code>mp_buytime 9999</code></td><td>Seconds after round start that buying stays open.</td><td>90</td></tr>
+            <tr><td><code>mp_buy_anywhere 1</code></td><td>Buy from anywhere on the map. <code>2</code> is T only, <code>3</code> is CT only.</td><td>0</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 id="rounds">Rounds and respawning</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Command</th><th>What it does</th><th>Default</th></tr></thead>
+          <tbody>
+            <tr><td><code>mp_freezetime 0</code></td><td>No frozen countdown at round start.</td><td>6</td></tr>
+            <tr><td><code>mp_roundtime 60</code></td><td>Round length in minutes.</td><td>5</td></tr>
+            <tr><td><code>mp_roundtime_defuse 60</code></td><td>Round length on bomb maps, which overrides <code>mp_roundtime</code> when set.</td><td>0</td></tr>
+            <tr><td><code>mp_ignore_round_win_conditions 1</code></td><td>The round never ends, even if a team dies or the bomb explodes.</td><td>0</td></tr>
+            <tr><td><code>mp_respawn_on_death_ct 1</code><br><code>mp_respawn_on_death_t 1</code></td><td>Respawn straight away after dying, per team.</td><td>0</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 id="grenades">Grenades and ammo</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Command</th><th>What it does</th><th>Default</th></tr></thead>
+          <tbody>
+            <tr><td><code>sv_infinite_ammo 1</code></td><td>You never run out of ammo or grenades and never reload. <code>2</code> gives infinite spare ammo but you still reload.</td><td>0</td></tr>
+            <tr><td><code>ammo_grenade_limit_total 5</code></td><td>How many grenades you can carry at once.</td><td>3</td></tr>
+            <tr><td><code>sv_grenade_trajectory_prac_trailtime 8</code></td><td>Draws the flight path of each grenade and keeps it on screen for 8 seconds.</td><td>0</td></tr>
+            <tr><td><code>sv_grenade_trajectory_prac_pipreview 1</code></td><td>Shows a picture-in-picture camera at the landing spot while you hold a grenade. Since <a href="https://store.steampowered.com/news/app/730/view/1783238125194269" rel="noopener">November 2024</a> it shows a jump throw while you hold jump.</td><td>0</td></tr>
+            <tr><td><code>sv_rethrow_last_grenade</code></td><td>Throws the last grenade thrown on the server again. Needs <code>sv_cheats 1</code>.</td><td>—</td></tr>
+            <tr><td><code>ent_fire smokegrenade_projectile kill</code></td><td>Removes every active smoke. Needs <code>sv_cheats 1</code>.</td><td>—</td></tr>
+            <tr><td><code>give weapon_smokegrenade</code></td><td>Gives you an item. Also <code>weapon_flashbang</code>, <code>weapon_hegrenade</code>, <code>weapon_molotov</code>, <code>weapon_incgrenade</code>, <code>weapon_decoy</code>. Since <a href="https://store.steampowered.com/news/app/730/view/1786409468859769" rel="noopener">December 2024</a> it drops what you're holding if that slot is taken.</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 id="movement">Movement and position</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Command</th><th>What it does</th><th>Default</th></tr></thead>
+          <tbody>
+            <tr><td><code>noclip</code></td><td>Fly through walls. Run it again to turn it off. Needs <code>sv_cheats 1</code>.</td><td>—</td></tr>
+            <tr><td><code>god</code></td><td>You can't take damage. Needs <code>sv_cheats 1</code>.</td><td>—</td></tr>
+            <tr><td><code>getpos</code></td><td>Prints your position and view angles to the console, so you can note down a throw spot.</td><td>—</td></tr>
+            <tr><td><code>setpos</code> / <code>setang</code></td><td>Moves you to a position and points your view at exact angles. Needs <code>sv_cheats 1</code>.</td><td>—</td></tr>
+            <tr><td><code>cl_showpos 1</code></td><td>Shows your position and speed on screen. <code>2</code> also shows jump height.</td><td>0</td></tr>
+            <tr><td><code>sv_showimpacts 1</code></td><td>Marks where bullets hit. <code>sv_showimpacts_time 10</code> keeps the marks for 10 seconds.</td><td>0</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 id="bots">Bots</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Command</th><th>What it does</th><th>Default</th></tr></thead>
+          <tbody>
+            <tr><td><code>bot_add_t</code> / <code>bot_add_ct</code></td><td>Adds a bot to that team.</td><td>—</td></tr>
+            <tr><td><code>bot_place</code></td><td>Puts a bot where you're aiming. Handy for checking whether a flash or smoke covers a spot. Needs <code>sv_cheats 1</code>.</td><td>—</td></tr>
+            <tr><td><code>bot_stop 1</code></td><td>Bots stop moving and thinking. Needs <code>sv_cheats 1</code>.</td><td>0</td></tr>
+            <tr><td><code>bot_freeze 1</code></td><td>Bots can't move. Needs <code>sv_cheats 1</code>.</td><td>0</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="broken">Old commands that don't work in CS2</h2>
+      <p>Many practice configs still copy these from CS:GO. They aren't in CS2 builds, so the console just ignores them:</p>
+      <ul>
+        <li><code>sv_grenade_trajectory</code> → use <code>sv_grenade_trajectory_prac_trailtime 8</code></li>
+        <li><code>sv_grenade_trajectory_time</code> → use <code>sv_grenade_trajectory_prac_trailtime</code></li>
+        <li><code>cl_grenadepreview</code> → use <code>sv_grenade_trajectory_prac_pipreview 1</code></li>
+      </ul>
+      <p>If your old config seems half-broken, these are usually why. Lineups can also shift after updates: Valve's April 1, 2026 notes warned that "grenade lineups on sloped surfaces may have changed".</p>
+
+      <h2 id="cfg-file">Save it as a cfg file</h2>
+      <ol>
+        <li>Open your CS2 folder: <code>Steam\steamapps\common\Counter-Strike Global Offensive\game\csgo\cfg\</code>. The folder still has the CS:GO name.</li>
+        <li>Create a text file called <code>practice.cfg</code> and paste in the config (and the binds, if you want them).</li>
+        <li>Load a map, open the console and type <code>exec practice</code>.</li>
+      </ol>
+
+      <h2 id="faq">FAQ</h2>
+      <div class="faq">
+        <details>
+          <summary>What is the grenade trajectory command in CS2?</summary>
+          <p><code>sv_grenade_trajectory_prac_trailtime 8</code> draws the path for 8 seconds, and <code>sv_grenade_trajectory_prac_pipreview 1</code> adds the landing-preview camera. The CS:GO command <code>sv_grenade_trajectory</code> doesn't exist in CS2.</p>
+        </details>
+        <details>
+          <summary>How do I rethrow a grenade?</summary>
+          <p>With <code>sv_cheats 1</code> on, run <code>sv_rethrow_last_grenade</code>, or bind it: <code>bind "n" "sv_rethrow_last_grenade"</code>.</p>
+        </details>
+        <details>
+          <summary>How do I clear smokes?</summary>
+          <p>With <code>sv_cheats 1</code> on, run <code>ent_fire smokegrenade_projectile kill</code>. Add <code>;stopsound</code> to cut the sound too.</p>
+        </details>
+        <details>
+          <summary>Which infinite ammo setting should I use?</summary>
+          <p><code>sv_infinite_ammo 1</code>: you never run out and never reload, which suits grenade practice. <code>2</code> keeps reloading but gives infinite spare ammo, which suits spray practice.</p>
+        </details>
+        <details>
+          <summary>Why don't the commands work on my workshop map?</summary>
+          <p>Since January 30, 2026, workshop maps only allow a short list of console commands. Use an official map, or launch CS2 with <code>-disable_workshop_command_filtering</code>.</p>
+        </details>
+        <details>
+          <summary>Can I use these in matchmaking?</summary>
+          <p>No. They only work on a server you control, such as a local Practice game. <code>sv_cheats</code> can't be turned on in official matches.</p>
+        </details>
+      </div>
+
+      <section class="cta" id="beta">
+        <h2>Skip the config.</h2>
+        <p>nades.gg is a new CS2 grenade tool. Beta signups are open.</p>
+        <form data-beta action="https://formspree.io/f/xjyvqwyn" method="POST">
+          <input type="hidden" name="source" value="guide: cs2-practice-commands">
+          <input type="email" name="email" required placeholder="you@email.com" aria-label="Email address" autocomplete="email">
+          <button type="submit">Request beta access</button>
+        </form>
+        <div class="notice err" role="alert" hidden></div>
+        <div class="notice ok" role="status" hidden>You're on the beta list. We'll email you when invites go out.</div>
+        <p class="alt">Or <a href="https://discord.gg/JF5NWh84xR">join the Discord</a>.</p>
+      </section>
+
+      <nav class="related" aria-label="Related guides">
+        <a href="/cs2-jumpthrow-bind/">Jumpthrow bind in CS2<span>Why the old bind stopped working, and how to jumpthrow by hand</span></a>
+      </nav>
+    </article>
+
+    <aside class="toc" aria-label="On this page">
+      <strong>On this page</strong>
+      <ol>
+        <li><a href="#config">The practice config</a></li>
+        <li><a href="#start">Start a practice server</a></li>
+        <li><a href="#binds">Useful binds</a></li>
+        <li><a href="#explained">Every command explained</a></li>
+        <li><a href="#broken">Old commands that don't work</a></li>
+        <li><a href="#cfg-file">Save it as a cfg file</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+  </div>
+
+  <footer class="site-foot">
+    <div><a href="/">nades.gg</a><a href="mailto:contact@nades.gg">contact@nades.gg</a></div>
+  </footer>
+
+  <script src="/assets/guide.js" defer></script>
+</body>
+</html>
