@@ -31,7 +31,7 @@
         const res = await fetch(form.action, {
           method: "POST",
           headers: { "Accept": "application/json", "Content-Type": "application/json" },
-          body: JSON.stringify({ email: form.email.value, source: form.source.value })
+          body: JSON.stringify({ email: form.email.value, source: form.source.value, _gotcha: form._gotcha ? form._gotcha.value : "" })
         });
         const data = await res.json().catch(() => null);
         if (!res.ok) {

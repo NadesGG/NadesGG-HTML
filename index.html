@@ -163,6 +163,7 @@
           <div class="signup">
             <form id="betaForm" action="https://formspree.io/f/xjyvqwyn" method="POST">
               <input type="hidden" name="source" value="nades.gg beta landing">
+              <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" hidden>
               <input class="input" id="email" type="email" name="email" required placeholder="you@email.com" aria-label="Email address" autocomplete="email">
               <button class="btn btn-dark" id="submitBtn" type="submit">Request beta access</button>
               <fieldset class="reasons" id="reasons">
@@ -179,7 +180,7 @@
               </fieldset>
             </form>
             <div class="notice err" id="formError" role="alert" hidden></div>
-            <div class="notice ok" id="formDone" role="status" hidden>You're on the beta list. We'll email you when invites go out.</div>
+            <div class="notice ok" id="formDone" role="status" hidden>You're on the beta list! We'll email you when invites go out. <br>If you're that eager, reach out to <a href="mailto:contact@nades.gg">contact@nades.gg</a> and set up an interview ;)</div>
 
             <div class="actions" id="cta">
               <a class="btn btn-outline" href="https://discord.gg/JF5NWh84xR">Join the Discord</a>
@@ -229,14 +230,20 @@
       btn.disabled = true;
       err.hidden = true;
       try {
+        // Numbered by the option's position on the form, not pick order, so "7." always means the same box.
+        const options = [...form.querySelectorAll('input[name="reasons"]')];
+        const picked = options.map((i, n) => i.checked ? `${n + 1}. ${i.value}` : null).filter(Boolean);
         const res = await fetch(form.action, {
           method: "POST",
           headers: { "Accept": "application/json", "Content-Type": "application/json" },
           // Joined into one string so Formspree shows the picks in a single readable column, not an array blob.
           body: JSON.stringify({
             email: $("email").value,
-            reasons: [...form.querySelectorAll('input[name="reasons"]:checked')].map(i => i.value).join("; ") || "None picked",
-            source: "nades.gg beta landing"
+            reasons: picked.join("; ") || "None picked",
+            picks: `${picked.length} of ${options.length}` + (picked.length === options.length ? " (all picked, possible bot)" : ""),
+            source: "nades.gg beta landing",
+            // fetch sends only what's listed here, so the honeypot has to be forwarded or Formspree never sees it.
+            _gotcha: form._gotcha.value
           })
         });
         const data = await res.json().catch(() => null);
