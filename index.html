@@ -88,23 +88,26 @@
     .logo-box { position: relative; width: 100%; max-width: 620px; aspect-ratio: 840 / 672; }
     .logo { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; animation: reveal 320ms 2000ms forwards; }
     .bang { position: absolute; left: 55.1%; top: 9.9%; width: 38.2%; height: auto; transform-origin: 50% 50%; animation: toss 1900ms cubic-bezier(.3,.7,.4,1) both, vanish 130ms 1910ms forwards; }
-    .copy { padding: 56px 32px; display: flex; flex-direction: column; justify-content: center; gap: 30px; min-width: 0; border-left: 2px solid #201e1d; animation: rise 900ms 650ms both; }
+    .copy { padding: 32px 32px; display: flex; flex-direction: column; justify-content: center; gap: 30px; min-width: 0; border-left: 2px solid #201e1d; animation: rise 900ms 650ms both; }
     .kicker { font-size: clamp(18px, 6.4vw, 30px); margin-bottom: -16px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; transform-origin: left center; animation: pulse 2s ease-in-out infinite; }
     h1 { margin: 0; font-weight: 900; font-size: clamp(36px, 5.4vw, 76px); line-height: .9; letter-spacing: -.04em; text-transform: uppercase; color: #fff; }
     .lede { margin: 0; max-width: 42ch; font-size: clamp(15px, 1.4vw, 18px); font-weight: 600; line-height: 1.5; }
     .lede + .lede { margin-top: -18px; font-weight: 500; }
-    .signup { display: flex; flex-direction: column; gap: 12px; max-width: 560px; }
+    .signup { display: flex; flex-direction: column; gap: 12px; max-width: 640px; }
     form { display: flex; flex-wrap: wrap; gap: 8px; }
     form .input[type="email"] { flex: 1 1 220px; min-width: 0; }
     .reasons { flex: 1 1 100%; margin: 4px 0 0; padding: 0; border: 0; min-width: 0; }
     .reasons legend { padding: 0; margin-bottom: 8px; font-size: 13px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
-    .reasons label { display: flex; align-items: flex-start; gap: 10px; padding: 7px 10px; font-size: 14px; font-weight: 600; line-height: 1.35; text-wrap: pretty; cursor: pointer; }
+    .reasons label { display: flex; align-items: flex-start; gap: 10px; padding: 5px 10px; font-size: 14px; font-weight: 600; line-height: 1.35; text-wrap: pretty; cursor: pointer; }
     .reasons label + label { margin-top: 2px; }
     .reasons label:hover { background: rgba(255, 255, 255, .25); }
     .reasons label:has(input:checked) { background: #fff; }
     .hype { display: inline-block; padding: 0 5px; background: #201e1d; color: #fff; font-weight: 900; font-style: italic; letter-spacing: .04em; transform: skew(-6deg); transition: transform 120ms; }
     .reasons label:hover .hype { transform: skew(-6deg) scale(1.08); }
     .reasons input { flex: none; width: 16px; height: 16px; margin: 1px 0 0; accent-color: #201e1d; cursor: pointer; }
+    .chips { display: grid; grid-template-columns: repeat(3, max-content); gap: 4px; } /* 3 over 2; flex-wrap left Africa alone under 4 */
+    .chips label { align-items: center; }
+    .chips label + label { margin-top: 0; }
     .notice { border: 2px solid #201e1d; padding: 12px 16px; font-size: 14px; font-weight: 700; }
     .notice.ok { background: #fff; font-size: 15px; }
     .notice.err { background: #201e1d; color: #f8f4f4; }
@@ -136,6 +139,10 @@
     @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: .62; transform: scale(1.03); } }
     @keyframes letterPop { 0%, 62%, 100% { transform: translateY(0) scale(1); } 10% { transform: translateY(-2px) scale(1.35); } 26% { transform: translateY(0) scale(1); } }
 
+    @media (max-width: 520px) {
+      .chips { grid-template-columns: repeat(2, max-content); } /* three region chips overflow a phone-width column */
+    }
+
     @media (prefers-reduced-motion: reduce) {
       .stage, .copy, .kicker, .pop, .flash { animation: none; }
       .hype { transition: none; }
@@ -166,15 +173,23 @@
               <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" hidden>
               <input class="input" id="email" type="email" name="email" required placeholder="you@email.com" aria-label="Email address" autocomplete="email">
               <button class="btn btn-dark" id="submitBtn" type="submit">Request beta access</button>
+              <fieldset class="reasons" id="regions">
+                <legend>Where do you play?</legend>
+                <div class="chips">
+                  <label><input type="checkbox" name="regions" value="North America"><span>North America</span></label>
+                  <label><input type="checkbox" name="regions" value="South America"><span>South America</span></label>
+                  <label><input type="checkbox" name="regions" value="Europe"><span>Europe</span></label>
+                  <label><input type="checkbox" name="regions" value="Oceania/Asia"><span>Oceania / Asia</span></label>
+                  <label><input type="checkbox" name="regions" value="Africa"><span>Africa</span></label>
+                </div>
+              </fieldset>
               <fieldset class="reasons" id="reasons">
                 <legend>Why you'd make a good beta tester</legend>
                 <label><input type="checkbox" name="reasons" value="Grenade lineup savant"><span>I'm a <strong class="hype">Grenade Line-Up SAVANT</strong> and other sites just don't cut it for me</span></label>
-                <label><input type="checkbox" name="reasons" value="Cracked at CS2"><span>I'm <strong class="hype">CRACKED at CS2</strong> and I need an outlet for my talent</span></label>
+                <label><input type="checkbox" name="reasons" value="Cracked at CS2, contributing knowledge"><span>I'm <strong class="hype">CRACKED at CS2</strong> and want to contribute my unique knowledge to the project</span></label>
                 <label><input type="checkbox" name="reasons" value="Content creator"><span>I'm a <strong class="hype">Content Creator</strong> looking to level-up my content creation</span></label>
                 <label><input type="checkbox" name="reasons" value="Experienced coach"><span>I'm a <strong class="hype">CS2 Coach</strong> who is basically Phil Jackson - Experienced &amp; Proven</span></label>
                 <label><input type="checkbox" name="reasons" value="Knows callouts"><span>I know <strong class="hype">Callouts</strong> like I'm a Mirage tour guide</span></label>
-                <label><input type="checkbox" name="reasons" value="Contributing CS2 knowledge"><span>I'm interested in <strong class="hype">Contributing my unique CS2 knowledge</strong> to the project</span></label>
-                <label><input type="checkbox" name="reasons" value="Bug testing and feedback"><span>I identify as being on the <strong class="hype">Bug Testing &amp; Providing Feedback</strong> spectrum.</span></label>
                 <label><input type="checkbox" name="reasons" value="Has tool ideas, not a developer"><span>I've got <strong class="hype">Ideas for a helpful CS2 tool</strong> but I have no idea how to develop it</span></label>
                 <label><input type="checkbox" name="reasons" value="CS2 developer with ideas"><span>I actively <strong class="hype">Develop for CS2</strong> and, boy... <em>I've got ideas, my friend!</em></span></label>
               </fieldset>
@@ -231,16 +246,23 @@
       err.hidden = true;
       try {
         // Numbered by the option's position on the form, not pick order, so "7." always means the same box.
-        const options = [...form.querySelectorAll('input[name="reasons"]')];
-        const picked = options.map((i, n) => i.checked ? `${n + 1}. ${i.value}` : null).filter(Boolean);
+        const tally = name => {
+          const options = [...form.querySelectorAll(`input[name="${name}"]`)];
+          const picked = options.map((i, n) => i.checked ? `${n + 1}. ${i.value}` : null).filter(Boolean);
+          const count = `${picked.length} of ${options.length}` + (picked.length === options.length ? " (all picked, possible bot)" : "");
+          return { list: picked.join("; ") || "None picked", count };
+        };
+        const reasons = tally("reasons"), regions = tally("regions");
         const res = await fetch(form.action, {
           method: "POST",
           headers: { "Accept": "application/json", "Content-Type": "application/json" },
           // Joined into one string so Formspree shows the picks in a single readable column, not an array blob.
           body: JSON.stringify({
             email: $("email").value,
-            reasons: picked.join("; ") || "None picked",
-            picks: `${picked.length} of ${options.length}` + (picked.length === options.length ? " (all picked, possible bot)" : ""),
+            reasons: reasons.list,
+            picks: reasons.count,
+            regions: regions.list,
+            region_picks: regions.count,
             source: "nades.gg beta landing",
             // fetch sends only what's listed here, so the honeypot has to be forwarded or Formspree never sees it.
             _gotcha: form._gotcha.value
