@@ -76,6 +76,8 @@
     .btn-dark:hover { background: #000; color: #f8f4f4; }
     .btn-outline { background: transparent; color: #201e1d; border: 2px solid #201e1d; }
     .btn-outline:hover { background: #201e1d; color: #f8f4f4; text-decoration: none; }
+    .btn-discord { background: #5865f2; color: #fff; border: 2px solid #201e1d; }
+    .btn-discord:hover { background: #4752c4; color: #fff; text-decoration: none; }
     .btn-ghost { background: transparent; color: #201e1d; border: 2px solid transparent; }
     .btn-ghost:hover { color: #fff; }
     .input { width: 100%; min-height: 36px; padding: 6px 10px; font: inherit; font-size: 14px; color: #201e1d; caret-color: #201e1d; background: #fff; border: 2px solid #201e1d; border-radius: 0; }
@@ -105,8 +107,11 @@
     .hype { display: inline-block; padding: 0 5px; background: #201e1d; color: #fff; font-weight: 900; font-style: italic; letter-spacing: .04em; transform: skew(-6deg); transition: transform 120ms; }
     .reasons label:hover .hype { transform: skew(-6deg) scale(1.08); }
     .reasons input { flex: none; width: 16px; height: 16px; margin: 1px 0 0; accent-color: #201e1d; cursor: pointer; }
-    .chips { display: grid; grid-template-columns: repeat(3, max-content); gap: 4px; } /* 3 over 2; flex-wrap left Africa alone under 4 */
-    .chips label { align-items: center; }
+    /* 3 over 2 (flex-wrap left Africa alone under 4). Six equal half-tracks, two per chip, so every chip is as wide as the
+       widest and the second row starts one half-track in, centered under the first. */
+    .chips { display: grid; grid-template-columns: repeat(6, 1fr); width: fit-content; gap: 4px; }
+    .chips label { grid-column: span 2; align-items: center; }
+    .chips label:nth-child(4) { grid-column: 2 / span 2; }
     .chips label + label { margin-top: 0; }
     .notice { border: 2px solid #201e1d; padding: 12px 16px; font-size: 14px; font-weight: 700; }
     .notice.ok { background: #fff; font-size: 15px; }
@@ -140,7 +145,10 @@
     @keyframes letterPop { 0%, 62%, 100% { transform: translateY(0) scale(1); } 10% { transform: translateY(-2px) scale(1.35); } 26% { transform: translateY(0) scale(1); } }
 
     @media (max-width: 520px) {
-      .chips { grid-template-columns: repeat(2, max-content); } /* three region chips overflow a phone-width column */
+      /* Three region chips overflow a phone-width column: 2, 2, then Africa centered. */
+      .chips { grid-template-columns: repeat(4, 1fr); }
+      .chips label:nth-child(4) { grid-column: span 2; }
+      .chips label:nth-child(5) { grid-column: 2 / span 2; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -174,7 +182,7 @@
               <input class="input" id="email" type="email" name="email" required placeholder="you@email.com" aria-label="Email address" autocomplete="email">
               <button class="btn btn-dark" id="submitBtn" type="submit">Request beta access</button>
               <fieldset class="reasons" id="regions">
-                <legend>Where do you play?</legend>
+                <legend>What region(s) do you play in?</legend>
                 <div class="chips">
                   <label><input type="checkbox" name="regions" value="North America"><span>North America</span></label>
                   <label><input type="checkbox" name="regions" value="South America"><span>South America</span></label>
@@ -198,7 +206,7 @@
             <div class="notice ok" id="formDone" role="status" hidden>You're on the beta list! We'll email you when invites go out. <br>If you're that eager, reach out to <a href="mailto:contact@nades.gg">contact@nades.gg</a> and set up an interview ;)</div>
 
             <div class="actions" id="cta">
-              <a class="btn btn-outline" href="https://discord.gg/JF5NWh84xR">Join the Discord</a>
+              <a class="btn btn-discord" href="https://discord.gg/JF5NWh84xR">Join the Discord</a>
               <button class="btn btn-ghost" id="reflash" type="button">Re-flash</button>
             </div>
           </div>
