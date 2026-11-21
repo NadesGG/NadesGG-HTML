@@ -215,7 +215,7 @@
       </main>
 
       <footer>
-        <span>Status — <span aria-hidden="true" id="status"></span><span class="sr-only">In development</span></span>
+        <span>Status — <span aria-hidden="true" id="status"></span><span class="sr-only">NEARING CLOSED BETA</span></span>
         <nav class="guides" aria-label="Guides">
           <a href="mailto:contact@nades.gg">contact@nades.gg</a>
         </nav>
@@ -231,10 +231,10 @@
     const $ = id => document.getElementById(id);
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    // Footer "In development" letters bounce in sequence; built here so the markup stays readable.
+    // Footer "NEARING CLOSED BETA" letters bounce in sequence; built here so the markup stays readable.
     const status = $("status");
     let delay = 0;
-    for (const ch of "In development") {
+    for (const ch of "NEARING CLOSED BETA") {
       const s = document.createElement("span");
       if (ch === " ") {
         s.style.cssText = "display:inline-block;width:.3em";
